@@ -1,0 +1,48 @@
+<%= form_with(model: sigthing, local: true) do |form| %>
+  <% if sigthing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sigthing.errors.count, "error") %> prohibited this sigthing from being saved:</h2>
+
+      <ul>
+      <% sigthing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :sigthing_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.time_select :time, id: :sigthing_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :region %>
+    <!-- <%= form.text_field :region, id: :sigthing_region %> -->
+    <%= form.select :region, ['Region1', 'Region2', 'Region3', 'Region4'], id: :sigthing_region%>
+  </div>
+
+  <div class="field">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude, id: :sigthing_latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude, id: :sigthing_longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :animal_id %>
+    <%= select(:sigthing, :animal_id, @animals_for_select) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
