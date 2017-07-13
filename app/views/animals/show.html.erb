@@ -16,11 +16,48 @@
 </p>
 
 <p>
-  <ul>
+  <ul id="sigthing_list">
     <%= render partial: 'sigthing', collection: @animal.sigthings %>
   </ul>
 </p>
 
-<%= link_to 'New Sighting', new_sigthing_path %> |
+<!-- <%= link_to 'New Sighting', new_sigthing_path %> | -->
 <%= link_to 'Edit', edit_animal_path(@animal) %> |
 <%= link_to 'Back', animals_path %>
+<br />
+<br />
+<hr />
+<h3>New sighting for this animal</h3>
+
+<p>
+  <!-- Input area for new wine -->
+  <div class="field">
+    <label for="date">Date</label>
+    <input type="date" name="sigthing[date]" id="sigthing_date" />
+  </div>
+  <div>
+    <label for="time">Time</label>
+    <input type="time" name="sigthing[time]" id="sigthing_time" />
+  </div>
+  <div class="field">
+    <label for="region">Region</label>
+    <select id="sigthing_region" name="sigthing[region]">
+      <option value="region1" selected="selected">Region1</option>
+      <option value="region2">Region2</option>
+      <option value="region3">Region3</option>
+      <option value="region4">Region4</option>
+    </select>
+  </div>
+  <div>
+    <label for="latitude">Latitude</label>
+    <input type="latitude" name="sigthing[latitude]" id="sigthing_latitude" />
+  </div>
+  <div>
+    <label for="longitude">Longitude</label>
+    <input type="longitude" name="sigthing[longitude]" id="sigthing_longitude" />
+  </div>
+  <br />
+  <input type="hidden" name="sigthing[animal_id]" id="animal_id" value="<%=@animal.id%>"/>
+  <button id="add_new_sigthing_button">Add New Sighting</button>
+
+</p>
