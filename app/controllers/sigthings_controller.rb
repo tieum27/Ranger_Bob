@@ -70,6 +70,20 @@ render('sigthings/index.html.erb')
     end
   end
 
+  # Puts the sigthings on the calendar
+  def get_events
+
+    @sigthing = Sigthing.all
+    events = []
+    @sigthing.each do |sigthing|
+      events << { id: sigthing.id,
+                  title: sigthing.region,
+                  start: sigthing.date.to_s + " " + sigthing.time.strftime("%H:%M:%S").to_s,
+                  url: Rails.application.routes.url_helpers.sigthing_path(sigthing.id)}
+    end
+    render :json => events.to_json
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sigthing
